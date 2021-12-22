@@ -58,7 +58,7 @@ public class LoginCourierTest {
     //данный ТС игнорируется при запуске тестов, т.к. в сервисе
     //существует проблема, что при вызове ручки api/v1/courier/login с "password" = null
     //возвращаеся 504 ошибка, из-за чего тест зависает и падает.
-    @Ignore
+    @Ignore("TC is ignored because of a bug: service returns 504 error code when password equals to null")
     @Test
     public void testLoginWithoutPasswordReturnsBadRequestCode(){
         ValidatableResponse responseOfLogin = courierClient.login(new CourierCredentials(courier.getLogin(), null));

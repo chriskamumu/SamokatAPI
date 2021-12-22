@@ -1,5 +1,6 @@
 package ru.yandex.samokat.client;
 
+import io.qameta.allure.Step;
 import io.restassured.response.ValidatableResponse;
 import ru.yandex.samokat.model.Courier;
 import ru.yandex.samokat.model.CourierCredentials;
@@ -10,6 +11,7 @@ public class CourierClient extends RestAssuredClient{
 
     private final static String COURIER_PATH = "/api/v1/courier";
 
+    @Step("Send POST request to /api/v1/courier to create a new courier")
     public ValidatableResponse create(Courier courier){
         return given()
                 .spec(getBaseSpec())
@@ -19,6 +21,7 @@ public class CourierClient extends RestAssuredClient{
                 .then();
     }
 
+    @Step("Send POST request to /api/v1/courier/login to login")
     public ValidatableResponse login(CourierCredentials courierCredentials){
         return given()
                 .spec(getBaseSpec())
@@ -28,6 +31,7 @@ public class CourierClient extends RestAssuredClient{
                 .then();
     }
 
+    @Step("Send DELETE request to /api/v1/courier/:id to remove the courier")
     public ValidatableResponse delete(int courierId){
 
         String body = "{ \"id\": \"" + courierId + "\"}";
