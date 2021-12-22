@@ -51,10 +51,6 @@ public class CreateCourierTest {
 
     }
 
-    //данный тест игнорируется, т.к. он падает из-за несоответствия выводимого сообщения:
-    //Expected: Этот логин уже используется
-    //  Actual: Этот логин уже используется. Попробуйте другой.
-    @Ignore
     @Test
     public void testCreateExistingCourierReturnsCodeConflict(){
         Courier courier1 = Courier.getRandom();
