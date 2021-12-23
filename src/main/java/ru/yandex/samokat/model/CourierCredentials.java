@@ -35,4 +35,11 @@ public class CourierCredentials {
         return new CourierCredentials(login, password);
     }
 
+    @Override
+    public String toString() {
+        return "CourierCredentials{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
 }
