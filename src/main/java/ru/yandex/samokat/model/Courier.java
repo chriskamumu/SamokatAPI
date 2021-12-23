@@ -55,6 +55,15 @@ public class Courier {
         return new Courier(login, password, firstName);
 
     }
+
+    @Override
+    public String toString() {
+        return "Courier{" +
+                "login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", firstName='" + firstName + '\'' +
+                '}';
+    }
 }
 
 

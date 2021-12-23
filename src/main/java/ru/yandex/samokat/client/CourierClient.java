@@ -31,7 +31,7 @@ public class CourierClient extends RestAssuredClient{
                 .then();
     }
 
-    @Step("Send DELETE request to /api/v1/courier/:id to remove the courier")
+    @Step("Send DELETE request to /api/v1/courier/:id to remove the courier with ID = {courierId}")
     public ValidatableResponse delete(int courierId){
 
         String body = "{ \"id\": \"" + courierId + "\"}";
