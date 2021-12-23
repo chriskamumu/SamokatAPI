@@ -1,5 +1,7 @@
 package ru.yandex.samokat.model;
 
+import org.apache.commons.lang3.RandomUtils;
+
 public enum MetroStation {
     BULVAR_ROCOSOVSCOGO ("Бульвар Рокоссовского"),
     CHERKIZOVSKAYA ("Черкизовская"),
@@ -9,7 +11,7 @@ public enum MetroStation {
     KOMSOMOLSKAYA ("Комсомольская"),
     KRASNIE_VOROTA ("Красные Ворота");
 
-    private String title;
+    private final String title;
 
     MetroStation(String title) {
         this.title = title;
@@ -21,8 +23,7 @@ public enum MetroStation {
 
     public static MetroStation getRandomStation(){
         int length = MetroStation.values().length;
-        int id = (int)(Math.random() * (length));
-
+        int id = RandomUtils.nextInt(0, length);
         return MetroStation.values()[id];
     }
 

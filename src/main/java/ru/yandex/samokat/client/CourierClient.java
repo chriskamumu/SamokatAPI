@@ -7,12 +7,12 @@ import ru.yandex.samokat.model.CourierCredentials;
 
 import static io.restassured.RestAssured.given;
 
-public class CourierClient extends RestAssuredClient{
+public class CourierClient extends AbstractRestAssuredClient {
 
     private final static String COURIER_PATH = "/api/v1/courier";
 
     @Step("Send POST request to /api/v1/courier to create a new courier")
-    public ValidatableResponse create(Courier courier){
+    public ValidatableResponse create(Courier courier) {
         return given()
                 .spec(getBaseSpec())
                 .body(courier)
@@ -22,7 +22,7 @@ public class CourierClient extends RestAssuredClient{
     }
 
     @Step("Send POST request to /api/v1/courier/login to login")
-    public ValidatableResponse login(CourierCredentials courierCredentials){
+    public ValidatableResponse login(CourierCredentials courierCredentials) {
         return given()
                 .spec(getBaseSpec())
                 .body(courierCredentials)
@@ -32,12 +32,10 @@ public class CourierClient extends RestAssuredClient{
     }
 
     @Step("Send DELETE request to /api/v1/courier/:id to remove the courier with ID = {courierId}")
-    public ValidatableResponse delete(int courierId){
+    public ValidatableResponse delete(int courierId) {
 
-        String body = "{ \"id\": \"" + courierId + "\"}";
         return given()
                 .spec(getBaseSpec())
-                .body(body)
                 .log().all()
                 .when()
                 .delete(COURIER_PATH + "/" + courierId)

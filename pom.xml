@@ -12,32 +12,38 @@
     <maven.compiler.source>11</maven.compiler.source>
     <maven.compiler.target>11</maven.compiler.target>
     <aspectj.version>1.9.7</aspectj.version>
-    <aspectj.version>1.9.7</aspectj.version>
     <allure.version>2.15.0</allure.version>
+    <junit.version>4.11</junit.version>
+    <rest-assured.version>4.4.0</rest-assured.version>
+    <jackson-databind.version>2.13.0</jackson-databind.version>
   </properties>
   <name>samokatAPI</name>
-  <url>http://maven.apache.org</url>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.11</version>
+      <version>${junit.version}</version>
     </dependency>
+
     <dependency>
       <groupId>io.rest-assured</groupId>
       <artifactId>rest-assured</artifactId>
-      <version>4.4.0</version>
+      <version>${rest-assured.version}</version>
     </dependency>
+
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
-      <version>2.13.0</version>
+      <version>${jackson-databind.version}</version>
     </dependency>
+
     <dependency>
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-junit4</artifactId>
       <version>${allure.version}</version>
     </dependency>
+
     <dependency>
       <groupId>io.qameta.allure</groupId>
       <artifactId>allure-rest-assured</artifactId>
@@ -47,7 +53,6 @@
   <build>
     <plugins>
       <plugin>
-        <!-- настройка плагина maven-surefire-plugin -->
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-plugin</artifactId>
         <version>2.22.2</version>
@@ -78,7 +83,7 @@
           </dependency>
         </dependencies>
       </plugin>
-      <!-- подключение плагина allure-maven для вызова функций Allure с помощью Maven -->
+
       <plugin>
         <groupId>io.qameta.allure</groupId>
         <artifactId>allure-maven</artifactId>

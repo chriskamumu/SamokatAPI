@@ -1,26 +1,38 @@
 package ru.yandex.samokat.model;
 
-import org.apache.commons.lang3.RandomStringUtils;
-
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
+
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphabetic;
+import static org.apache.commons.lang3.RandomStringUtils.randomAlphanumeric;
+import static org.apache.commons.lang3.RandomStringUtils.randomNumeric;
 
 public class Order {
 
     private final String firstName;
     private final String lastName;
     private final String address;
-    private final String metroStation;
+    private final MetroStation metroStation;
     private final String phone;
     private final int rentTime;
+
+    // FIXME: 22.12.2021 почему строкой?
     private final String deliveryDate;
     private final String comment;
-    private final ColorType[] colors;
+    private final List<ColorType> colors;
 
-    public Order(String firstName, String lastName, String address, String metroStation,
-                 String phone, int rentTime, String deliveryDate, String comment, ColorType[] colors) {
+    public Order(String firstName,
+                 String lastName,
+                 String address,
+                 MetroStation metroStation,
+                 String phone,
+                 int rentTime,
+                 String deliveryDate,
+                 String comment,
+                 List<ColorType> colors) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
@@ -45,7 +57,7 @@ public class Order {
     }
 
     public String getMetroStation() {
-        return metroStation;
+        return metroStation.getTitle();
     }
 
     public String getPhone() {
@@ -64,29 +76,8 @@ public class Order {
         return comment;
     }
 
-    public ColorType[] getColors() {
+    public List<ColorType> getColors() {
         return colors;
-    }
-
-    public static Order getRandom(ColorType[] colors) throws ParseException {
-        final String firstName = RandomStringUtils.randomAlphabetic(10);
-        final String lastName = RandomStringUtils.randomAlphabetic(10);
-        final String address = RandomStringUtils.randomAlphanumeric(10);
-        final String metroStation = MetroStation.getRandomStation().getTitle();
-        final String phone = "+7" + RandomStringUtils.randomNumeric(10);
-        final int rentTime = (int)(Math.random()*10 + 1);
-        final String deliveryDate = getCurrentDate();
-        final String comment = RandomStringUtils.randomAlphabetic(10);
-
-        return new Order(firstName, lastName, address, metroStation,
-                phone, rentTime, deliveryDate, comment, colors);
-    }
-
-    private static String getCurrentDate() throws ParseException {
-        Date currentDate = new Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-        String format = formatter.format(currentDate);
-        return format;
     }
 
     @Override
@@ -95,12 +86,12 @@ public class Order {
                 "firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", address='" + address + '\'' +
-                ", metroStation='" + metroStation + '\'' +
+                ", metroStation='" + metroStation.getTitle() + '\'' +
                 ", phone='" + phone + '\'' +
                 ", rentTime=" + rentTime +
                 ", deliveryDate='" + deliveryDate + '\'' +
                 ", comment='" + comment + '\'' +
-                ", colors=" + Arrays.toString(colors) +
+                ", colors=" + colors +
                 '}';
     }
 }

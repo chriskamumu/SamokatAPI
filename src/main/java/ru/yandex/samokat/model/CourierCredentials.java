@@ -21,20 +21,6 @@ public class CourierCredentials {
         this.password = password;
     }
 
-    public static CourierCredentials getCourierCredentials(Courier courier){
-        return new CourierCredentials(courier.getLogin(), courier.getPassword());
-    }
-
-    public static CourierCredentials getCourierCredentialsWithRandomPassword(String login){
-        final String password = RandomStringUtils.randomAlphabetic(10);
-        return new CourierCredentials(login, password);
-    }
-
-    public static CourierCredentials getCourierCredentialsWithRandomLogin(String password){
-        final String login = RandomStringUtils.randomAlphabetic(10);
-        return new CourierCredentials(login, password);
-    }
-
     @Override
     public String toString() {
         return "CourierCredentials{" +

@@ -1,13 +1,10 @@
 package ru.yandex.samokat;
 
 import io.restassured.response.ValidatableResponse;
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import ru.yandex.samokat.client.OrderClient;
-import ru.yandex.samokat.model.Order;
-
-import java.text.ParseException;
+import ru.yandex.samokat.util.OrderUtils;
 
 import static org.hamcrest.CoreMatchers.notNullValue;
 
@@ -16,10 +13,9 @@ public class OrderListTest {
     private OrderClient orderClient;
 
     @Before
-    public void setUp() throws ParseException {
+    public void setUp() {
         orderClient = new OrderClient();
-        //создание заказа, чтобы список заказов точно был не пустым
-        orderClient.create(Order.getRandom(null));
+        orderClient.create(OrderUtils.buildRandomOrder(null));
     }
 
     @Test
