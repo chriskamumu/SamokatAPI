@@ -1,9 +1,9 @@
 package ru.yandex.samokat;
 
 import io.restassured.response.ValidatableResponse;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import ru.yandex.samokat.client.CourierClient;
 import ru.yandex.samokat.model.Courier;
 
@@ -22,13 +22,13 @@ public class CreateCourierTest {
     public CourierClient courierClient;
     List<Integer> courierIds;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         courierClient = new CourierClient();
         courierIds = new ArrayList<>();
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         if (!courierIds.isEmpty()) {
             for (Integer courierId :

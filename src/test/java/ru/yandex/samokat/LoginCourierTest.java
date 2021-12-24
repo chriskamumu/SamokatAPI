@@ -1,10 +1,10 @@
 package ru.yandex.samokat;
 
 import io.restassured.response.ValidatableResponse;
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterEach;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 import ru.yandex.samokat.client.CourierClient;
 import ru.yandex.samokat.model.Courier;
 import ru.yandex.samokat.model.CourierCredentials;
@@ -22,13 +22,13 @@ public class LoginCourierTest {
     private Courier courier;
     private int courierId;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         courier = CourierUtils.buildRandom();
         courierClient.create(courier);
     }
 
-    @After
+    @AfterEach
     public void tearDown() {
         loginAndSetCourierIdForDeletion(courier);
         courierClient.delete(courierId).assertThat().statusCode(SC_OK);
@@ -65,7 +65,7 @@ public class LoginCourierTest {
 
     }
 
-    @Ignore("TC is ignored because of a bug: service returns 504 error code when password equals to null")
+    @Disabled("TC is ignored because of a bug: service returns 504 error code when password equals to null")
     @Test
     public void testLoginWithoutPasswordReturnsBadRequestCode() {
         // FIXME: 22.12.2021 в этих всех методах тоже надо поаккуратнее порефакторить

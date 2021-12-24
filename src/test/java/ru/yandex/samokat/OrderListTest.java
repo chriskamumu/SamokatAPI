@@ -1,8 +1,8 @@
 package ru.yandex.samokat;
 
 import io.restassured.response.ValidatableResponse;
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import ru.yandex.samokat.client.OrderClient;
 import ru.yandex.samokat.util.OrderUtils;
 
@@ -12,7 +12,7 @@ public class OrderListTest {
 
     private OrderClient orderClient;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         orderClient = new OrderClient();
         orderClient.create(OrderUtils.buildRandomOrder(null));
