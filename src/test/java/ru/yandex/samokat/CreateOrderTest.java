@@ -21,16 +21,6 @@ import java.util.List;
 
 public class CreateOrderTest {
 
-//    @Parameterized.Parameters
-//    public static Collection<Object[]> getTestData(){
-//        return Arrays.asList(new Object[][] {
-//                {Arrays.asList(BLACK), SC_CREATED, notNullValue()},
-//                {Arrays.asList(GREY), SC_CREATED, notNullValue()},
-//                {Arrays.asList(GREY, BLACK), SC_CREATED, notNullValue()},
-//                {null, SC_CREATED, notNullValue()}
-//        });
-//    }
-
     @ParameterizedTest
     @MethodSource("generateTestData")
     public void testCreateOrder(List<ColorType> colors, int expectedCode, Matcher expectedTrack) {

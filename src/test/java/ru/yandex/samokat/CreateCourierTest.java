@@ -33,7 +33,7 @@ public class CreateCourierTest {
         if (!courierIds.isEmpty()) {
             for (Integer courierId :
                     courierIds) {
-                courierClient.delete(courierId).assertThat().statusCode(SC_OK);
+                courierClient.delete(courierId.toString()).assertThat().statusCode(SC_OK);
             }
         }
     }

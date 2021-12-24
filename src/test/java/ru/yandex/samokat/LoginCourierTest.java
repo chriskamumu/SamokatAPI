@@ -20,7 +20,7 @@ import static ru.yandex.samokat.util.CourierCredentialsUtils.*;
 public class LoginCourierTest {
     private final CourierClient courierClient = new CourierClient();
     private Courier courier;
-    private int courierId;
+    private Integer courierId;
 
     @BeforeEach
     public void setUp() {
@@ -31,7 +31,7 @@ public class LoginCourierTest {
     @AfterEach
     public void tearDown() {
         loginAndSetCourierIdForDeletion(courier);
-        courierClient.delete(courierId).assertThat().statusCode(SC_OK);
+        courierClient.delete(courierId.toString()).assertThat().statusCode(SC_OK);
     }
 
     private void loginAndSetCourierIdForDeletion(Courier courier) {

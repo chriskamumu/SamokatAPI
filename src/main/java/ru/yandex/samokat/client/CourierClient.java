@@ -32,7 +32,7 @@ public class CourierClient extends AbstractRestAssuredClient {
     }
 
     @Step("Send DELETE request to /api/v1/courier/:id to remove the courier with ID = {courierId}")
-    public ValidatableResponse delete(int courierId) {
+    public ValidatableResponse delete(String courierId) {
 
         return given()
                 .spec(getBaseSpec())
