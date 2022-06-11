@@ -65,7 +65,7 @@ public class CreateCourierTest {
 
         responseOfCourier2Creating.assertThat()
                 .statusCode(SC_CONFLICT)
-                .body("message", equalTo("Этот логин уже используется"));
+                .body("message", equalTo("Этот логин уже используется!"));
 
     }
 
@@ -88,7 +88,7 @@ public class CreateCourierTest {
         ValidatableResponse responseOfCreating = courierClient.create(courier);
         responseOfCreating.assertThat()
                 .statusCode(SC_BAD_REQUEST)
-                .body("message", equalTo("Недостаточно данных для создания учетной записи"));
+                .body("message", equalTo("Недостаточно данных для создания учетной записи!"));
     }
 
     @Test
